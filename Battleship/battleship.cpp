@@ -114,6 +114,7 @@ char hardMap4[7][7] = {
 
 void main() {
 	srand(22);
+	selectMode();
 }
 
 void selectMode() {
