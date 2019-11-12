@@ -46,6 +46,26 @@ char mediumDisplayMapP2[6][6] = {
 	{'*', '*', '*', '*', '*','*'}
 };
 
+char hardDisplayMapP1[7][7] = {
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'}
+};
+
+char hardDisplayMapP2[7][7] = {
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'},
+	{'*', '*', '*', '*', '*', '*', '*'}
+};
+
 string mode;
 
 bool playerOneDead = false;
@@ -353,7 +373,7 @@ void shipAttackP1() {
    cout << "Player 2:" << endl;
    for(int r = 0; r < 5; r++){
 	for(int c = 0; c < 5; c++){
-	    cout << easyDisplayMapP1[r][c];
+	    cout << easyDisplayMapP2[r][c];
 	}
    	cout << endl;
    }
@@ -362,61 +382,61 @@ void shipAttackP1() {
             if(!(x > 4) && !(y > 4) && !(x < 0) && !(y < 0)){
                 if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
                     cout << "Hit" << endl;
-                    playerOneShipMap[x][y] = 'X';
-       		    easyDisplayMapP1[x][y] = 'X';
+                    playerTwoShipMap[x][y] = 'X';
+       		    easyDisplayMapP2[x][y] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMap[x][y] = 'O';
-       		    easyDisplayMapP1[x][y] = 'O';
+                    playerTwoShipMap[x][y] = 'O';
+       		    easyDisplayMapP2[x][y] = 'O';
                 }
             }
     }
 
 if(mode == "medium"){
    cout << "Player 2:" << endl;
-   for(int r = 0; r < 5; r++){
-    for(int c = 0; c < 5; c++){
-    cout << easyDisplayMapP1[r][c];
+   for(int r = 0; r < 6; r++){
+    for(int c = 0; c < 6; c++){
+    cout << mediumDisplayMapP2[r][c];
     }
     cout << endl;
    }
-   cout << "Player 1, pick coordinates to attack" << endl
+   cout << "Player 1, pick coordinates to attack" << endl;
             cin >> x >> y;
             if(!(x > 5) && !(y > 5) && !(x < 0) && !(y < 0)){
-                if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
+                if (playerTwoShipMap[x][y] == 'D' || playerTwoShipMap[x][y] == 'B' || playerTwoShipMap[x][y] == 'S') {
                     cout << "Hit" << endl;
-                    playerOneShipMap[x][y] = 'X';
-                    easyDisplayMapP1[x][y] = 'X';
+                    playerTwoShipMap[x][y] = 'X';
+                    mediumDisplayMapP2[x][y] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMap[x][y] = 'O';
-		    easyDisplayMapP1[x][y] = 'O';
+                    playerTwoShipMapMap[x][y] = 'O';
+		    mediumDisplayMapP2[x][y] = 'O';
                 }
             }
     }
 
 	if(mode == "hard"){
 	   cout << "Player 2:" << endl;
-	   for(int r = 0; r < 5; r++){
-		for(int c = 0; c < 5; c++){
-			cout << easyDisplayMapP1[r][c];
+	   for(int r = 0; r < 7; r++){
+		for(int c = 0; c < 7; c++){
+			cout << hardDisplayMapP2[r][c];
 		}
 		cout << endl;
 	}
-   	cout << "Player 1, pick coordinates to attack" << endl
+   	cout << "Player 1, pick coordinates to attack" << endl;
             cin >> x >> y;
             if(!(x > 6) && !(y > 6) && !(x < 0) && !(y < 0)){
-                if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
+                if (playerTwoShipMap[x][y] == 'D' || playerTwoShipMap[x][y] == 'B' || playerTwoShipMap[x][y] == 'S') {
                     cout << "Hit" << endl;
-                    playerOneShipMap[x][y] = 'X';
-	   	    easyDisplayMapP1[x][y] = 'X';
+                    playerTwoShipMap[x][y] = 'X';
+	   	    hardDisplayMapP2[x][y] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMap[x][y] = 'O';
-		    easyDisplayMapP1[x][y] = 'O';
+                    playerTwoShipMap[x][y] = 'O';
+		    hardDisplayMapP2[x][y] = 'O';
                 }
             }
     }
@@ -431,7 +451,7 @@ void shipAttackP2() {
 		}
 		cout << endl;
 	    }
-	    cout << "Player 2, pick coordinates to attack" << endl
+	    cout << "Player 2, pick coordinates to attack" << endl;
             cin >> x >> y;
             if(!(x > 4) && !(y > 4) && !(x < 0) && !(y < 0)){
                 if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
@@ -451,22 +471,22 @@ void shipAttackP2() {
 	    cout << "Player 1:" << endl;
 	    for(int r = 0; r < 6; r++){
 		for(int c = 0; c < 6; c++){
-			cout << easyDisplayMapP1[r][c];
+			cout << mediumDisplayMapP1[r][c];
 		}
 		cout << endl;
 	    }
-	    cout << "Player 2, pick coordinates to attack" << endl
+	    cout << "Player 2, pick coordinates to attack" << endl;
             cin >> x >> y;
             if(!(x > 5) && !(y > 5) && !(x < 0) && !(y < 0)){
                 if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
                     cout << "Hit" << endl;
                     playerOneShipMap[x][y] = 'X';
-		    easyDisplayMapP1[x][y] = 'X';
+		    mediumDisplayMapP1[x][y] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
                     playerOneShipMap[x][y] = 'O';
-		    easyDisplayMapP1[x][y] = 'O';
+		    mediumDisplayMapP1[x][y] = 'O';
                 }
             }
     	}
@@ -485,12 +505,12 @@ void shipAttackP2() {
                 if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
                     cout << "Hit" << endl;
                     playerOneShipMap[x][y] = 'X';
-		    easyDisplayMapP1[x][y] = 'X';
+		    hardDisplayMapP1[x][y] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
                     playerOneShipMap[x][y] = 'O';
-		    easyDisplayMapP1[x][y] = 'O';
+		    hardDisplayMapP1[x][y] = 'O';
                 }
             }
     	}
