@@ -8,6 +8,10 @@ char playerOneShipMap[7][7];
 
 char playerTwoShipMap[7][7];
 
+string mode;
+
+bool playerOneDead = false;
+
 char easyMap1[5][5] = {
 	{'*', '*', '*', '*', '*'},
 	{'*', 'B', 'B', 'B', 'B'},
@@ -115,10 +119,15 @@ char hardMap4[7][7] = {
 void main() {
 	srand(22);
 	selectMode();
+	bool gameRunning == true;
+	while(gameRunning){
+		int xCoord;
+    		int yCoord;
+		shipAttackP1(xCoord, yCoord);
+	}
 }
 
 void selectMode() {
-	string mode;
 	cout << "select a game mode (easy, medium or hard)" << endl;
 	cin >> mode;
 	if(mode == "easy"){
@@ -235,5 +244,48 @@ void selectMode() {
 				break;
 		}
 	}
+}
+
+
+void GameOverCheck(int x, int y) {
+    bool gameRunning = true;
+    int i;
+    int j;
+    if (mode == "easy") {
+        for (i = 0; i < 5; i++) {
+            for (j = 0; j < 5; j++) {
+                if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'S' || playerOneShipMap == 'B') {
+                    playerOneDead = false;
+                }
+                else{
+                    playerOneDead = true;
+                }
+            }
+        }
+    }
+}
+
+bool shipAttackP1(int x, int y, bool isRunning) {
+   
+   do {
+       if(mode == "easy"){
+    for(rows)
+        for(columns)
+        cin >> x >> y;
+            if(inrange){
+                if (playerOneShipMap[x][y] == 'D' || playerOneShipMap[x][y] == 'B' || playerOneShipMap[x][y] == 'S') {
+                    cout << "Hit" << endl;
+                    playerOneShipMap[x][y] = 'X';
+                    return true;
+                }
+                else {
+                    cout << "Miss" << endl;
+                    playerOneShipMap[x][y] = 'O';
+                    return false;
+                }
+            }
+    }
+   }
+   while (GameOverCheck() == false)
 }
 
