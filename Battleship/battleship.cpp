@@ -16,6 +16,7 @@ char playerTwoShipMapH[7][7];
 
 int x;
 char y;
+int yInt;
 
 string p1Name;
 string p2Name;
@@ -203,6 +204,37 @@ char hardMap4[7][7] = {
 {'D', '*', '*', 'B', '*', '*', 'S'},
 {'D', '*', '*', '*', '*', '*', 'S'}
 };
+
+
+void CharsToNums(char a){
+	    switch(a){
+		case 'a':
+			yInt = 0;
+			break;
+		case 'b':
+			yInt = 1;
+			break;
+		case 'c':
+			yInt = 2;
+			break;
+		case 'd':
+			yInt = 3;
+			break;
+		case 'e':
+			yInt = 4;
+			break;
+		case 'f':
+			yInt = 5;
+			break;
+		case 'g':
+			yInt = 6;
+			break;
+		default:
+			yInt = 7;
+			break;
+	    }
+}
+
 
 void selectMode() {
 cout << "select a game mode (easy, medium or hard)" << endl;
@@ -479,8 +511,9 @@ void shipAttackP1() {
    
    if(mode == "easy"){
    cout << p2Name << "'s board:" << endl;
-   cout << "abcde" << endl;
+   cout << " abcde" << endl;
    for(int r = 0; r < 5; r++){
+	cout << r;
 	for(int c = 0; c < 5; c++){
 	   cout << easyDisplayMapP2[r][c];
 	}
@@ -494,25 +527,27 @@ void shipAttackP1() {
 		   cout << endl;
 		}*/
             cin >> x >> y;
-            if(!(x > 4) && !(y > 'e') && !(x < 0) && !(y < 'a')){
-                if (playerTwoShipMapE[x][y] == 'D' || playerTwoShipMapE[x][y] == 'B' || playerTwoShipMapE[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 4) && !(yInt > 4) && !(x < 0) && !(yInt < 0)){
+                if (playerTwoShipMapE[x][yInt] == 'D' || playerTwoShipMapE[x][yInt] == 'B' || playerTwoShipMapE[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p1Hits++;
-                    playerTwoShipMapE[x][y] = 'X';
-           	    easyDisplayMapP2[x][y] = 'X';
+                    playerTwoShipMapE[x][yInt] = 'X';
+           	    easyDisplayMapP2[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerTwoShipMapE[x][y] = 'O';
-                    easyDisplayMapP2[x][y] = 'O';
+                    playerTwoShipMapE[x][yInt] = 'O';
+                    easyDisplayMapP2[x][yInt] = 'O';
                 }
             }
     }
 
 if(mode == "medium"){
    cout << p2Name << "'s board:" << endl;
-   cout << "abcdef" << endl;
+   cout << " abcdef" << endl;
    for(int r = 0; r < 6; r++){
+	cout << r;
     for(int c = 0; c < 6; c++){
     cout << mediumDisplayMapP2[r][c];
     }
@@ -520,25 +555,27 @@ if(mode == "medium"){
    }
    cout << p1Name << ", pick coordinates to attack" << endl;
             cin >> x >> y;
-            if(!(x > 5) && !(y > 'f') && !(x < 0) && !(y < 'a')){
-                if (playerTwoShipMapM[x][y] == 'D' || playerTwoShipMapM[x][y] == 'B' || playerTwoShipMapM[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 5) && !(yInt > 5) && !(x < 0) && !(yInt < 0)){
+                if (playerTwoShipMapM[x][yInt] == 'D' || playerTwoShipMapM[x][yInt] == 'B' || playerTwoShipMapM[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p1Hits++;
-                    playerTwoShipMapM[x][y] = 'X';
-                    mediumDisplayMapP2[x][y] = 'X';
+                    playerTwoShipMapM[x][yInt] = 'X';
+                    mediumDisplayMapP2[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerTwoShipMapM[x][y] = 'O';
-           	    mediumDisplayMapP2[x][y] = 'O';
+                    playerTwoShipMapM[x][yInt] = 'O';
+           	    mediumDisplayMapP2[x][yInt] = 'O';
                 }
             }
     }
 
 if(mode == "hard"){
   cout << p2Name << "'s board:" << endl;
-cout << "abcdefg" << endl;
+cout << " abcdefg" << endl;
   for(int r = 0; r < 7; r++){
+	cout << r;
 for(int c = 0; c < 7; c++){
 cout << hardDisplayMapP2[r][c];
 }
@@ -546,31 +583,33 @@ cout << endl;
 }
     cout << p1Name << ", pick coordinates to attack" << endl;
             cin >> x >> y;
-            if(!(x > 6) && !(y > 'g') && !(x < 0) && !(y < 'a')){
-                if (playerTwoShipMapH[x][y] == 'D' || playerTwoShipMapH[x][y] == 'B' || playerTwoShipMapH[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 6) && !(yInt > 6) && !(x < 0) && !(yInt < 0)){
+                if (playerTwoShipMapH[x][yInt] == 'D' || playerTwoShipMapH[x][yInt] == 'B' || playerTwoShipMapH[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p1Hits++;
-                    playerTwoShipMapH[x][y] = 'X';
-     		    hardDisplayMapP2[x][y] = 'X';
+                    playerTwoShipMapH[x][yInt] = 'X';
+     		    hardDisplayMapP2[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerTwoShipMapH[x][y] = 'O';
-   		    hardDisplayMapP2[x][y] = 'O';
+                    playerTwoShipMapH[x][yInt] = 'O';
+   		    hardDisplayMapP2[x][yInt] = 'O';
                 }
             }
     }
 }
 
 void shipAttackP2() {
-       if(mode == "easy"){
-	cout << "abcde" << endl;
+   if(mode == "easy"){
    cout << p1Name << "'s board:" << endl;
+   cout << " abcde" << endl;
    for(int r = 0; r < 5; r++){
-for(int c = 0; c < 5; c++){
-cout << easyDisplayMapP1[r][c];
-}
-cout << endl;
+	cout << r;
+	for(int c = 0; c < 5; c++){
+		cout << easyDisplayMapP1[r][c];
+	}
+	cout << endl;
    }
    cout << p2Name << ", pick coordinates to attack" << endl;
 		/*for (int i = 0; i < 5; i++) {
@@ -580,69 +619,74 @@ cout << endl;
 		   cout << endl;
 		}*/
             cin >> x >> y;
-            if(!(x > 4) && !(y > 'e') && !(x < 0) && !(y < 'a')){
-                if (playerOneShipMapE[x][y] == 'D' || playerOneShipMapE[x][y] == 'B' || playerOneShipMapE[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 4) && !(yInt > 4) && !(x < 0) && !(yInt < 0)){
+                if (playerOneShipMapE[x][yInt] == 'D' || playerOneShipMapE[x][yInt] == 'B' || playerOneShipMapE[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p2Hits++;
-                    playerOneShipMapE[x][y] = 'X';
-   		    easyDisplayMapP1[x][y] = 'X';
+                    playerOneShipMapE[x][yInt] = 'X';
+   		    easyDisplayMapP1[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMapE[x][y] = 'O';
-   easyDisplayMapP1[x][y] = 'O';
+                    playerOneShipMapE[x][yInt] = 'O';
+   		    easyDisplayMapP1[x][yInt] = 'O';
                 }
             }
     }
 
 if(mode == "medium"){
    cout << p1Name << "'s board:" << endl;
-cout << "abcdef" << endl;
+cout << " abcdef" << endl;
    for(int r = 0; r < 6; r++){
-for(int c = 0; c < 6; c++){
-cout << mediumDisplayMapP1[r][c];
-}
-cout << endl;
+	cout << r;
+	for(int c = 0; c < 6; c++){
+		cout << mediumDisplayMapP1[r][c];
+	}
+	cout << endl;
    }
    cout << p2Name << ", pick coordinates to attack" << endl;
             cin >> x >> y;
-            if(!(x > 5) && !(y > 'f') && !(x < 0) && !(y < 'a')){
-                if (playerOneShipMapM[x][y] == 'D' || playerOneShipMapM[x][y] == 'B' || playerOneShipMapM[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 5) && !(yInt > 5) && !(x < 0) && !(yInt < 0)){
+                if (playerOneShipMapM[x][yInt] == 'D' || playerOneShipMapM[x][yInt] == 'B' || playerOneShipMapM[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p2Hits++;
-                    playerOneShipMapM[x][y] = 'X';
-   		    mediumDisplayMapP1[x][y] = 'X';
+                    playerOneShipMapM[x][yInt] = 'X';
+   		    mediumDisplayMapP1[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMapM[x][y] = 'O';
-   		    mediumDisplayMapP1[x][y] = 'O';
+                    playerOneShipMapM[x][yInt] = 'O';
+   		    mediumDisplayMapP1[x][yInt] = 'O';
                 }
             }
     }
 
 if(mode == "hard"){
    cout << p1Name << "'s board:" << endl;
-cout << "abcdefg" << endl;
-   for(int r = 0; r < 5; r++){
-for(int c = 0; c < 5; c++){
-cout << easyDisplayMapP1[r][c];
+cout << " abcdefg" << endl;
+   for(int r = 0; r < 7; r++){
+	cout << r;
+for(int c = 0; c < 7; c++){
+cout << hardDisplayMapP1[r][c];
 }
 cout << endl;
    }
    cout << p2Name << ", pick coordinates to attack" << endl;
             cin >> x >> y;
-            if(!(x > 6) && !(y > 'g') && !(x < 0) && !(y < 'a')){
-                if (playerOneShipMapH[x][y] == 'D' || playerOneShipMapH[x][y] == 'B' || playerOneShipMapH[x][y] == 'S') {
+	    CharsToNums(y);
+            if(!(x > 6) && !(yInt > 6) && !(x < 0) && !(yInt < 0)){
+                if (playerOneShipMapH[x][yInt] == 'D' || playerOneShipMapH[x][yInt] == 'B' || playerOneShipMapH[x][yInt] == 'S') {
                     cout << "Hit" << endl;
 		    p2Hits++;
-                    playerOneShipMapH[x][y] = 'X';
-   		    hardDisplayMapP1[x][y] = 'X';
+                    playerOneShipMapH[x][yInt] = 'X';
+   		    hardDisplayMapP1[x][yInt] = 'X';
                 }
                 else {
                     cout << "Miss" << endl;
-                    playerOneShipMapH[x][y] = 'O';
-   		    hardDisplayMapP1[x][y] = 'O';
+                    playerOneShipMapH[x][yInt] = 'O';
+   		    hardDisplayMapP1[x][yInt] = 'O';
                 }
             }
     }
